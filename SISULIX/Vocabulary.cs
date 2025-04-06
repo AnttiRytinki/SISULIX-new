@@ -56,14 +56,14 @@
                 }
             }
 
-            public void ReadFromFile(string filePath) // Make filePath non-nullable
+            public void ReadFromFile(string filePath)
             {
+                Console.WriteLine(MethodBase.GetCurrentMethod()!.Name + " - " + filePath);
+
                 if (filePath == null)
                 {
                     throw new ArgumentNullException(nameof(filePath), "File path cannot be null.");
                 }
-
-                Console.WriteLine(MethodBase.GetCurrentMethod()!.Name + " - " + filePath);
 
                 using (StreamReader reader = new StreamReader(filePath))
                 {

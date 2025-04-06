@@ -93,30 +93,22 @@ bool IsColor(string input, int searchDepth)
 {
     Console.WriteLine(MethodBase.GetCurrentMethod()!.Name);
 
-    // Early check for null input to avoid unnecessary loop iterations.
     if (input == null)
         return false;
 
-    // Loop through the search depth
     for (int i = 0; i < searchDepth; i++)
     {
         Console.WriteLine("IsColor" + " - " + "Iteration" + " - " + i.ToString());
 
-        // Start parallel process (if needed, using Task.Run)
         Task.Run(() =>
         {
-            // Here you could do parallel work, for example, checking if input is a color.
             if (CheckIfColor(input))
             {
                 Console.WriteLine("Color found in parallel process.");
             }
         });
-
-        // If you want to immediately return based on the result of CheckIfColor, keep it here.
-        // But remember: this is not a blocking call.
     }
 
-    // This would return false by default unless you handle the results of your parallel checks.
     return false;
 }
 
